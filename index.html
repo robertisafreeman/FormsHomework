@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <style>
+        input {
+            height: 3rem;
+        }
+        #error {
+            color:red;
+            font-size: 3rem;
+        }
+        </style>
+    </head>
+    <body>
+        <form>
+            <input name ="foo" placeholder ='enter foo value' /> 
+            <button>Save</button> 
+            <div id='error'></div>
+        </form>
+    <script>
+    const form = document.querySelector('form');
+    const input = document.querySelector('input[name="foo"]');
+    const errorMessage = document.querySelector('#error')
+    const button = document.querySelector('button')
+    input.addEventListener('keyup', (ev)=> {
+        if(!ev.target.value) {
+            errorMessage.innerHTML ='value for foo is required'
+            button.setAttribute('disabled', 'disabled')
+        }
+        else {
+            errorMessage.innerHTML = ''
+            button.removeAttribute('disabled')
+        }
+        console.log(ev.target.value)
+    })
+    form.addEventListener('submit', (ev) =>{
+        ev.preventDefault();
+        console.log('do something else');
+    } );
+    </script>
+    </body>
+</html>
